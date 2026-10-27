@@ -28,4 +28,7 @@ class Controller:
         self._view.update()
 
     # Altre Funzioni Event Handler
+    #gestiamo il pulsante Mostra della sezione 3 dove vengono mostrati l'elenco degli strumenti
+    def mostra_strumenti(self,e):
+        pass
     # TODO
