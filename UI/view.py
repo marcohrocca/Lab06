@@ -63,11 +63,10 @@ class View:
         pulsante_conferma_responsabile = ft.Button("Conferma", on_click=self.controller.conferma_responsabile)
 
         # Altri Pulsanti da implementare (es. "Mostra" e "Cerca")
-        # TODO
         #Un controllo Button "Mostra" per mostrare tutti gli strumenti presenti nel database.
         pulsante_mostra=ft.Button("Mostra",on_click=self.controller.mostra_strumenti)
         #Creo bottone cerca
-        pulsante_cerca=ft.Button("Cerca" ,on_click=self.controller.cerca_strumento)
+        pulsante_cerca=ft.Button("Cerca" ,on_click=self.controller.cerca_strumenti_per_tipo)
 
         # --- LAYOUT ---
         self.page.add(
@@ -86,11 +85,11 @@ class View:
             ft.Divider(),
 
             # Sezione 3
-            #TODO
             #Inserisco la mera parte testuale con scritto strumenti direttamente dentro la riga
             ft.Row(spacing=10,
                    controls=[ft.Text("Strumenti", size=20), pulsante_mostra ],
                    alignment=ft.MainAxisAlignment.START), #Uso start per allinearlo a sinistra come nell'immagine data
+            self.lista_strumenti, #aggiunge la lista degli strumenti
             ft.Divider(),
 
             # Sezione 4
@@ -99,10 +98,7 @@ class View:
             ft.Row(spacing=10,
                    controls=[self.input_tipo_strumento, pulsante_cerca],
                    alignment=ft.MainAxisAlignment.START),
-
-
-
-            # TODO
+            self.lista_strumenti_ricerca #Aggiunge lista strumenti selezionati
         )
 
     def cambia_tema(self, e):

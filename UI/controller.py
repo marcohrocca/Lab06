@@ -8,6 +8,8 @@ from model.model import DepositoStrumenti
     - Gestisce la logica del flusso dell'applicazione
 '''
 
+#VERIFICARE DURANTE CORREZIONE SE ERANO NECESSARIE ULTERIORI GESTIONI DEGLI ERRORI
+
 class Controller:
     def __init__(self, view: View, model: DepositoStrumenti):
         self._model = model
@@ -28,11 +30,21 @@ class Controller:
         self._view.update()
 
     # Altre Funzioni Event Handler
+
     #gestiamo il pulsante Mostra della sezione 3 dove vengono mostrati l'elenco degli strumenti
     def mostra_strumenti(self,e):
-        pass
+        self._view.lista_strumenti.controls.clear() #Svuoto la lista
+        strumenti=self._model.get_strumenti() #Chiedo lista strumenti al model
+        for strumento in strumenti:
+            self._view.lista_strumenti.controls.append(ft.Text(str(strumento)))
+        self._view.update()
 
     #Gestiamo pulsante Cerca della sezione 4,usato per cercare strumento per tipo
-    def cerca_strumento(self,e):
-        pass
-    # TODO
+    def cerca_strumenti_per_tipo(self,e):
+        self._view.lista_strumenti_ricerca.controls.clear() #Svuoto la lista
+        tipo=self._view.input_tipo_strumento.value #Prendo dalla view valore inserito dall'utente
+        strumenti=self._model.cerca_strumenti_per_tipo(tipo) #Chiedo a model strumenti filtrati
+        for strumento in strumenti:
+            self._view.lista_strumenti_ricerca.controls.append(ft.Text(str(strumento)))
+        self._view.update()
+
