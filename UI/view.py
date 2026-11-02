@@ -65,7 +65,9 @@ class View:
         # Altri Pulsanti da implementare (es. "Mostra" e "Cerca")
         # TODO
         #Un controllo Button "Mostra" per mostrare tutti gli strumenti presenti nel database.
-        pulsante_mostra=ft.Button("Cerca",on_click=self.controller.mostra_strumenti)
+        pulsante_mostra=ft.Button("Mostra",on_click=self.controller.mostra_strumenti)
+        #Creo bottone cerca
+        pulsante_cerca=ft.Button("Cerca" ,on_click=self.controller.cerca_strumento)
 
         # --- LAYOUT ---
         self.page.add(
@@ -85,14 +87,21 @@ class View:
 
             # Sezione 3
             #TODO
-            #Inserisco la mera parte testuale con scritto strumenti
-            ft.Text("Strumenti",size=20)
-            ft.Row(spacing=200,
-                   controls=[self.input_tipo_strumento, pulsante_mostra],
-                   alignment=ft.MainAxisAlignment.CENTER),
+            #Inserisco la mera parte testuale con scritto strumenti direttamente dentro la riga
+            ft.Row(spacing=10,
+                   controls=[ft.Text("Strumenti", size=20), pulsante_mostra ],
+                   alignment=ft.MainAxisAlignment.START), #Uso start per allinearlo a sinistra come nell'immagine data
             ft.Divider(),
 
             # Sezione 4
+            ft.Text("Cerca Strumento per Tipo", size=20), #Questo è titoletto sopra
+            #Creo riga con Textfield e bottone
+            ft.Row(spacing=10,
+                   controls=[self.input_tipo_strumento, pulsante_cerca],
+                   alignment=ft.MainAxisAlignment.START),
+
+
+
             # TODO
         )
 

@@ -31,4 +31,8 @@ class Controller:
     #gestiamo il pulsante Mostra della sezione 3 dove vengono mostrati l'elenco degli strumenti
     def mostra_strumenti(self,e):
         pass
+
+    #Gestiamo pulsante Cerca della sezione 4,usato per cercare strumento per tipo
+    def cerca_strumento(self,e):
+        pass
     # TODO

@@ -36,7 +36,17 @@ class DepositoStrumenti:
             :return: una lista con tutti gli strumenti presenti oppure None
         """
         # TODO
+        cnx = get_connection() #Mi connetto al database
+        cursor = cnx.cursor(dictionary=True)
+        query= "SELECT * FROM STRUMENTO" #CHIEDO TUTTI GLI STRUMENTI
+        cursor.execute(query)
+        lista_strumenti=[] #inizializzo contenitore
+        #listview come lista vuota(quello che mostrerò dopo)
+        for riga in cursor: #faccio ciclo su ogni riga trovata
+            strumento = Strumento(
+                riga["codice"]
 
+            )
     def cerca_strumenti_per_tipo(self, tipo) -> list[Strumento] | None:
         """
             Funzione che recupera una lista con tutti gli strumenti presenti nel database di un certo tipo
